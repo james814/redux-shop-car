@@ -1,18 +1,13 @@
 export const BUY = 'BUY';
-export const SEE_LIST = 'SEE_LIST';
 export const RESET = 'RESET';
 
-export const buy = (prod) => {
+export const buy = (price) => {
   return {
     type: BUY,
-    prod
+    price
   }
 }
-export const seeList = () => {
-  return {
-    type: SEE_LIST
-  }
-}
+
 export const reset = () => {
   return (dispatch) => {
     setTimeout(() => {

@@ -3,21 +3,36 @@ import React, { PureComponent } from 'react';
 class List extends PureComponent {
   render() {
     const {
-      show,
-      prods,
+      price,
       handleBuy,
-      handleSeeList,
       handleReset
     } = this.props
-    const productions = ['雞肉鍋', '牛肉鍋', '豬肉鍋', '海鮮鍋']
+    const productions = [
+      {
+        name: '雞肉鍋',
+        price: 90
+      },
+      {
+        name: '牛肉鍋',
+        price: 120
+      },
+      {
+        name: '豬肉鍋',
+        price: 100
+      },
+      {
+        name: '海鮮鍋',
+        price: 140
+      }
+    ]
     return (
       <div>
-        <h1>{prods.length}</h1>
+        <h1>$: {price}</h1>
         <hr />
         <ul>
-          {productions.map((ele, idx) => (
-            <li key={idx}>{ele}
-              <button type="button" onClick={() => handleBuy(ele)}>+</button>
+          {productions.map((ele) => (
+            <li key={ele.name}>{ele.name}: {ele.price}
+              <button type="button" onClick={() => handleBuy(ele.price)}>+</button>
             </li>
           ))}
         </ul>
@@ -27,13 +42,6 @@ class List extends PureComponent {
         >
           reset
         </button>
-        <button
-          type="button"
-          onClick={handleSeeList}
-        >
-          See List
-        </button>
-        {show ? <div>{prods}</div> : null}
       </div>
     );
   }

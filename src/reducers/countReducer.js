@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-import { BUY, SEE_LIST, RESET } from '../actions/conuntActions';
+import { BUY, RESET } from '../actions/conuntActions';
 
 const iniData = {
-  show: false,
-  prods: []
+  price: 0
 }
 
 const shop = (state = iniData, action) => {
@@ -11,18 +10,12 @@ const shop = (state = iniData, action) => {
     case BUY:
       return {
         ...state,
-        prods: [...state.prods, action.prod]
+        price: state.price + action.price
       }
     case RESET:
       return {
         ...state,
-        show: false,
-        prods: []
-      }
-    case SEE_LIST:
-      return {
-        ...state,
-        show: !state.show
+        price: 0
       }
     default:
       return state
